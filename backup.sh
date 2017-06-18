@@ -1,11 +1,31 @@
 #!/bin/bash
+echo ""
+echo ""
+echo "-----------------------"
+echo "Corinthmc Network Tools"
+echo " Written By Fonix 2017"
+echo "-----------------------"
+echo ""
+echo ""
+sleep 5
 
+#Variables
 USER="#"
 PASSWORD="#"
 OUTPUT="#"
 
+#Empty out the Output directory
+echo "Empty out the Output directory"
 rm "$OUTPUT/*gz" > /dev/null 2>&1
+sleep 2
 
+#Create the Ouput Folder if it doesnt exist
+echo "Create the Ouput Folder if it doesnt exist"
+mkdir -p $OUTPUT
+sleep 2
+
+#Init Connection and Trigger Location and Backup of Every Database
+echo "Init Connection and Trigger Location and Backup of Every Database"
 databases=`mysql --user=$USER --password=$PASSWORD -e "SHOW DATABASES;" | tr -d "| " | grep -v Database`
 
 for db in $databases; do
@@ -15,3 +35,13 @@ for db in $databases; do
         gzip $OUTPUT/`date +%Y%m%d`.$db.sql
     fi
 done
+
+sleep 5
+echo ""
+echo ""
+echo "-----------------------"
+echo "       Complete        "
+echo "      Thank You!       "
+echo "-----------------------"
+echo ""
+echo ""
