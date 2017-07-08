@@ -10,19 +10,21 @@ echo ""
 sleep 5
 
 #Variables
-USER="#"
-PASSWORD="#"
-OUTPUT="#"
-
+USER=#
+PASSWORD=#
+OUTPUT=#
 #Empty out the Output directory
 echo "Empty out the Output directory"
-rm "$OUTPUT/*gz" > /dev/null 2>&1
+rm -rf $OUTPUT/*.gz
 sleep 2
 
 #Create the Ouput Folder if it doesnt exist
 echo "Create the Ouput Folder if it doesnt exist"
 mkdir -p $OUTPUT
 sleep 2
+
+#Make a directory for the current date!
+mkdir $OUTPUT/`date +%Y%m%d`
 
 #Init Connection and Trigger Location and Backup of Every Database
 echo "Init Connection and Trigger Location and Backup of Every Database"
@@ -36,6 +38,7 @@ for db in $databases; do
     fi
 done
 
+mv $OUTPUT/*.gz $OUTPUT/`date +%Y%m%d`/
 sleep 5
 echo ""
 echo ""
