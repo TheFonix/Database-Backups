@@ -1,15 +1,6 @@
 #!/bin/bash
-echo ""
-echo ""
-echo "-----------------------"
-echo "	Fonix Network Tools"
-echo " Written By Fonix 2017"
-echo "-----------------------"
-echo ""
-echo ""
-sleep 5
 
-#Variables
+#Variables to be completed
 USER="HIDDEN"
 PASSWORD="HIDDEN"
 OUTPUT="HIDDEN"
@@ -28,7 +19,7 @@ sleep 2
 mkdir $OUTPUT/`date +%Y-%m-%d`
 
 #Init Connection and Trigger Location and Backup of Every Database
-echo "Init Connection and Trigger Location and Backup of Every Database"
+echo "Init Connection and Trigger Backup of Every Database"
 databases=`mysql --user=$USER --password=$PASSWORD -e "SHOW DATABASES;" | tr -d "| " | grep -v Database`
 
 for db in $databases; do
@@ -47,11 +38,4 @@ echo "Remmoving files older than a week!"
 sleep 1
 find $OUTPUT* -mtime +7 -exec rm -rf {} \;
 
-echo ""
-echo ""
-echo "-----------------------"
-echo "       Complete        "
-echo "      Thank You!       "
-echo "-----------------------"
-echo ""
-echo ""
+echo "Done"
